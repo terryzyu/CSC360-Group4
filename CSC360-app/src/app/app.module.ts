@@ -11,6 +11,7 @@ import {MyTripsComponent} from './mytrips/mytrips.component';
 import { AppRoutingModule } from './app-routing.module';
 import { TriphomeComponent } from './triphome/triphome.component';
 import { NewtripComponent } from './newtrip/newtrip.component';
+import { FlightResultsComponent } from './flight-results/flight-results.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { NewtripComponent } from './newtrip/newtrip.component';
     HomepageComponent,
     MyTripsComponent,
     TriphomeComponent,
-    NewtripComponent
+    NewtripComponent,
+    FlightResultsComponent
   ],
   imports: [
     BrowserModule,
