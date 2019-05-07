@@ -9,12 +9,16 @@ import { HomepageComponent } from './homepage/homepage.component';
 import {MyTripsComponent} from './mytrips/mytrips.component';
 
 import { AppRoutingModule } from './app-routing.module';
+import { TriphomeComponent } from './triphome/triphome.component';
+import { NewtripComponent } from './newtrip/newtrip.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomepageComponent,
-    MyTripsComponent
+    MyTripsComponent,
+    TriphomeComponent,
+    NewtripComponent
   ],
   imports: [
     BrowserModule,
