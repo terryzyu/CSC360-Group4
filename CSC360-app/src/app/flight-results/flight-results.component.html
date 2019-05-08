@@ -1,12 +1,14 @@
-
 <body>
-    <div class="w3-bar w3-light-gray">
-      <a routerLink="/homepage" class="w3-bar-item w3-button" style="width:16.7%"><- Back Home</a>
-      <span class="w3-bar-item w3-center" style="width:65%">Flight Search Results</span>
-    </div>
-
+  <!-- <div class="w3-bar w3-light-gray">
+    <a routerLink="/homepage" class="w3-bar-item w3-button" style="width:16.7%"><- Back Home</a>
+    <span class="w3-bar-item w3-center" style="width:65%">Flight Search Results</span>
+  </div> -->
+  <nav class="navbar navbar-dark bg-dark">
+    <a class="navbar-brand" routerLink="/homepage">Back Home</a>
+  </nav>
+  <div class="flight_result_container">
     <div class="col-md-12">
-      <table class="flight_results_table" style="width: 95%; margin-top: 30px; margin-left: 35px; line-height: inherit; border-spacing: 5px;">
+      <table class="flight_results_table" style="width: 95%; margin: 40px; line-height: 40px;">
         <tr style= "font-size: 20px;">
           <th>{{default}}</th>
           <th>Flight Number</th>
@@ -61,51 +63,52 @@
           <th>12:52 A.M.</th>
           <th>3 Hours</th>
           <th>$160</th>
-          </tr>
-          <tr style = "font-size: 14px;">
-            <th>United Airlines</th>
-            <th>2349</th>
-            <th>ORD</th>
-            <th>MIA</th>
-            <th>08/01/19</th>
-            <th>11:52 A.M</th>
-            <th>2:52 P.M.</th>
-            <th>3 Hours</th>
-            <th>$229</th>
-          </tr>
-          <tr style = "font-size: 14px;">
-            <th>American Airlines</th>
-            <th>2350</th>
-            <th>ORD</th>
-            <th>BOS</th>
-            <th>08/01/19</th>
-            <th>2:52 P.M.</th>
-            <th>5:52 P.M.</th>
-            <th>3 Hours</th>
-            <th>$239</th>
-          </tr>
-          <tr style = "font-size: 14px;">
-            <th>Spirit Airlines</th>
-            <th>2351</th>
-            <th>ORD</th>
-            <th>LGA</th>
-            <th>08/01/19</th>
-            <th>1:52 A.M</th>
-            <th>4:52 P.M.</th>
-            <th>3 Hours</th>
-            <th>$179</th>
-          </tr>
-          <tr style = "font-size: 14px;">
-            <th>Jet Blue</th>
-            <th>2352</th>
-            <th>ORD</th>
-            <th>DAL</th>
-            <th>08/01/19</th>
-            <th>9:52 A.M</th>
-            <th>2:52 P.M.</th>
-            <th>5 Hours</th>
-            <th>$125</th>
-          </tr>
+        </tr>
+        <tr style = "font-size: 14px;">
+          <th>United Airlines</th>
+          <th>2349</th>
+          <th>ORD</th>
+          <th>MIA</th>
+          <th>08/01/19</th>
+          <th>11:52 A.M</th>
+          <th>2:52 P.M.</th>
+          <th>3 Hours</th>
+          <th>$229</th>
+        </tr>
+        <tr style = "font-size: 14px;">
+          <th>American Airlines</th>
+          <th>2350</th>
+          <th>ORD</th>
+          <th>BOS</th>
+          <th>08/01/19</th>
+          <th>2:52 P.M.</th>
+          <th>5:52 P.M.</th>
+          <th>3 Hours</th>
+          <th>$239</th>
+        </tr>
+        <tr style = "font-size: 14px;">
+          <th>Spirit Airlines</th>
+          <th>2351</th>
+          <th>ORD</th>
+          <th>LGA</th>
+          <th>08/01/19</th>
+          <th>1:52 A.M</th>
+          <th>4:52 P.M.</th>
+          <th>3 Hours</th>
+          <th>$179</th>
+        </tr>
+        <tr style = "font-size: 14px;">
+          <th>Jet Blue</th>
+          <th>2352</th>
+          <th>ORD</th>
+          <th>DAL</th>
+          <th>08/01/19</th>
+          <th>9:52 A.M</th>
+          <th>2:52 P.M.</th>
+          <th>5 Hours</th>
+          <th>$125</th>
+        </tr>
       </table>
     </div>
-
+  </div>
+</body>
