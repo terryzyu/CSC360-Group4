@@ -13,6 +13,7 @@ import { TriphomeComponent } from './triphome/triphome.component';
 import { NewtripComponent } from './newtrip/newtrip.component';
 import { FlightResultsComponent } from './flight-results/flight-results.component';
 import { LoginComponent } from './login/login.component';
+import { FlightSearchComponent } from './flight-search/flight-search.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { LoginComponent } from './login/login.component';
     TriphomeComponent,
     NewtripComponent,
     FlightResultsComponent,
-    LoginComponent
+    LoginComponent,
+    FlightSearchComponent
   ],
   imports: [
     BrowserModule,
