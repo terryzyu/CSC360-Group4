@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/homepage', pathMatch: 'full'},
   {path: 'homepage', component: HomepageComponent},
   {path: 'mytrips', component: MyTripsComponent},
-  {path: 'triphome', component: TriphomeComponent},
+  {path: 'triphome/:tripName', component: TriphomeComponent},
   {path: 'newtrip', component: NewtripComponent},
   {path: 'flight-results', component: FlightResultsComponent},
   {path: 'login', component: LoginComponent}

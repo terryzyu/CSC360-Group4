@@ -3,12 +3,16 @@
     <a routerLink="/mytrips" class="nav-item nav-link">Back</a>
   </div>
   <div class="container justify-content-center">
-    <span  class="navbar-brand mx-5">{{tripDate}}</span>
+    <span  class="navbar-brand mx-5">New Trip</span>
   </div>
 </nav>
 
 <div class="container-fluid" >
   <form>
+    <div class="form-group">
+      <label for="tripname">Trip Name:</label>
+      <input type="text" class="form-control" id="tripname" [(ngModel)]="newTrip.name" name="name">
+    </div>
     <div class="form-row">
       <div class="form-group col-md-6">
         <label for="startdate" class="mr-sm-2">Start Date:</label>
@@ -23,7 +27,7 @@
       <label for="location">Location:</label>
       <input type="text" class="form-control" id="location" placeholder="Location" [(ngModel)]="newTrip.location" name="location">
     </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
     <div class="form-group">
       <p>
         {{newTrip.startDate}} {{newTrip.endDate}}  {{newTrip.location}}

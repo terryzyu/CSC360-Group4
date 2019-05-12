@@ -5,7 +5,7 @@
     <a routerLink="/mytrips" class="nav-item nav-link">Back</a>
   </div>
   <div class="container justify-content-center">
-    <span  class="navbar-brand mx-5">{{tripName}}</span>
+    <span  class="navbar-brand mx-5">{{mytrip.name}}</span>
   </div>
   <div class="navebar-nav">
     <a routerLink="/weather" class="nav-link navbar-right">
@@ -15,7 +15,7 @@
 </nav>
 
 <div class="container-fluid">
-  <p class = "text-center">$1271</p>
+  <p class = "text-center">{{mytrip.budget}}</p>
   <hr>
 </div>
 <div class="list-group">
