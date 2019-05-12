@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+
+import {TripService} from '../trip.service';
 import {TRIPS} from '../mock-trips';
 
 @Component({
@@ -8,8 +10,14 @@ import {TRIPS} from '../mock-trips';
 })
 export class MyTripsComponent implements OnInit {
   trips = TRIPS;
-  constructor() { }
+  constructor(private tripService: TripService) { }
 
   ngOnInit() {
+    this.getTrips();
+  }
+
+  getTrips(): void {
+    this.tripService.getTrips()
+      .subscribe(trip => this.trips = trip);
   }
 }
