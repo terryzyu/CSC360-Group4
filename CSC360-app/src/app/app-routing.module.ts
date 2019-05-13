@@ -6,6 +6,7 @@ import {TriphomeComponent} from './triphome/triphome.component';
 import {NewtripComponent} from './newtrip/newtrip.component';
 import {FlightResultsComponent} from './flight-results/flight-results.component';
 import { LoginComponent } from './login/login.component';
+import {BudgetComponent} from './budget/budget.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/homepage', pathMatch: 'full'},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'triphome/:tripName', component: TriphomeComponent},
   {path: 'newtrip', component: NewtripComponent},
   {path: 'flight-results', component: FlightResultsComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'budget', component: BudgetComponent}
 ];
 
 @NgModule({

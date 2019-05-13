@@ -14,6 +14,7 @@ import { NewtripComponent } from './newtrip/newtrip.component';
 import { FlightResultsComponent } from './flight-results/flight-results.component';
 import { LoginComponent } from './login/login.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
+import { BudgetComponent } from './budget/budget.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FlightSearchComponent } from './flight-search/flight-search.component';
     NewtripComponent,
     FlightResultsComponent,
     LoginComponent,
-    FlightSearchComponent
+    FlightSearchComponent,
+    BudgetComponent
   ],
   imports: [
     BrowserModule,
