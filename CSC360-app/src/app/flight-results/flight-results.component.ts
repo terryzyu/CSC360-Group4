@@ -10,6 +10,7 @@ export class FlightResultsComponent implements OnInit {
   americanA = 'American Airlines';
   spirit = 'Spirit Airlines';
   united = 'United Airlines';
+  delta = 'Delta Airlines';
   constructor() { }
 
   ngOnInit() {
