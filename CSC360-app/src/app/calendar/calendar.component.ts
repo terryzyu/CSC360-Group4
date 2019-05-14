@@ -14,7 +14,7 @@ export class SafePipe implements PipeTransform {
 
 @Component({
   selector: 'app-calendar',
-  templateUrl: './calendar.testing.html',
+  templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.css']
 })
 export class CalendarComponent implements OnInit {
