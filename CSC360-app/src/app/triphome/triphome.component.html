@@ -15,10 +15,10 @@
 </nav>
 
 <div class="container-fluid">
-  <p class = "text-center">{{mytrip.budget}}</p>
+  <p class = "text-center">Your budget for the trip: {{mytrip.budget | currency}}</p>
   <hr>
 </div>
 <div class="list-group">
-  <a routerLink="/budget" class="list-group-item list-group-item-action w-25 mx-auto" >Budget</a>
+  <a routerLink="/budget" class="list-group-item list-group-item-action w-25 mx-auto" >Budget Breakdown</a>
   <a routerLink="/calendar" class="list-group-item list-group-item-action w-25 mx-auto" >Calendar</a>
 </div>

@@ -15,6 +15,7 @@ import { FlightResultsComponent } from './flight-results/flight-results.componen
 import { LoginComponent } from './login/login.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { BudgetComponent } from './budget/budget.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { BudgetComponent } from './budget/budget.component';
     FlightResultsComponent,
     LoginComponent,
     FlightSearchComponent,
-    BudgetComponent
+    BudgetComponent,
+    CalendarComponent
   ],
   imports: [
     BrowserModule,

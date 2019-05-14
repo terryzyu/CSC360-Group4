@@ -7,6 +7,7 @@ import {NewtripComponent} from './newtrip/newtrip.component';
 import {FlightResultsComponent} from './flight-results/flight-results.component';
 import { LoginComponent } from './login/login.component';
 import {BudgetComponent} from './budget/budget.component';
+import { CalendarComponent } from './calendar/calendar.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/homepage', pathMatch: 'full'},
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'newtrip', component: NewtripComponent},
   {path: 'flight-results', component: FlightResultsComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'budget', component: BudgetComponent}
+  {path: 'budget', component: BudgetComponent},
+  {path: 'calendar', component: CalendarComponent}
 ];
 
 @NgModule({
