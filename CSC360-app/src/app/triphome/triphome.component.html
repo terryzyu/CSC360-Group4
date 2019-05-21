@@ -9,7 +9,8 @@
   </div>
   <div class="navebar-nav">
     <a routerLink="/weather" class="nav-link navbar-right">
-      <img src="assets/sunny-cartoon-weather-clipart-1.jpg" style="width:40px" alt="Sunny">
+      <!--<img src="assets/sunny-cartoon-weather-clipart-1.jpg" style="width:40px" alt="Sunny"> -->
+      {{weather.main.temp}}
     </a>
   </div>
 </nav>
@@ -22,3 +23,5 @@
   <a routerLink="/budget" class="list-group-item list-group-item-action w-25 mx-auto" >Budget Breakdown</a>
   <a routerLink="/calendar" class="list-group-item list-group-item-action w-25 mx-auto" >Calendar</a>
 </div>
+
+<p *ngIf="error" class="jasmine-errored"> {{error | json}}</p>

@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { BudgetComponent } from './budget/budget.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import {HttpClientModule} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
