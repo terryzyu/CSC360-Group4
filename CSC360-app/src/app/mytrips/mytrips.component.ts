@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import {TripService} from '../trip.service';
-import {TRIPS} from '../mock-trips';
+import {Trip} from '../trip';
 
 @Component({
   selector: 'app-mytrips',
@@ -9,7 +9,7 @@ import {TRIPS} from '../mock-trips';
   styleUrls: ['./mytrips.component.css']
 })
 export class MyTripsComponent implements OnInit {
-  trips = TRIPS;
+  trips: Trip[];
   constructor(private tripService: TripService) { }
 
   ngOnInit() {

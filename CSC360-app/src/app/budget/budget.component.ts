@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 
-import {EVENTS} from '../mock-events';
+
+import {Events} from '../events';
 import {EventsService} from '../events.service';
-import {nextContext} from '@angular/core/src/render3';
+
 
 @Component({
   selector: 'app-budget',
@@ -11,7 +12,7 @@ import {nextContext} from '@angular/core/src/render3';
   styleUrls: ['./budget.component.css']
 })
 export class BudgetComponent implements OnInit {
-  Events = EVENTS;
+  Events: Events[];
 
   constructor(private eventsService: EventsService,
               private location: Location) { }
@@ -26,5 +27,9 @@ export class BudgetComponent implements OnInit {
 
   goBack() {
     this.location.back();
+  }
+
+  onDelete(arrayElement: Events) {
+    this.Events = this.Events.filter(obj => obj !== arrayElement);
   }
 }
