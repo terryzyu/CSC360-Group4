@@ -29,8 +29,8 @@ export class TriphomeComponent implements OnInit {
 
   getTrip(): void {
     const tripName = this.route.snapshot.paramMap.get('tripName');
-    this.tripService.getTrip(tripName)
-      .subscribe(trip => this.mytrip = trip);
+    // this.tripService.getTrip(tripName)
+    //  .subscribe(trip => this.mytrip = trip);
   }
 
   getWeather() {

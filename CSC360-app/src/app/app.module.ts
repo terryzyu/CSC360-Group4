@@ -18,6 +18,11 @@ import { BudgetComponent } from './budget/budget.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import {HttpClientModule} from '@angular/common/http';
 
+import { AngularFireModule} from '@angular/fire';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+import {environment} from '../environments/environment';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -36,7 +41,9 @@ import {HttpClientModule} from '@angular/common/http';
     AppRoutingModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]

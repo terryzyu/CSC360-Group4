@@ -15,7 +15,7 @@
   </nav>
 
   <div class="container-fluid trips">
-    <div class="list-group" *ngFor="let trip of trips">
+    <div class="list-group" *ngFor="let trip of trips ">
       <a routerLink="/triphome/{{trip.name}}" class="list-group-item list-group-item-action w-50 mx-auto" >
         <div class="row">
           <div class="col-sm-3">{{trip.name}}</div>
