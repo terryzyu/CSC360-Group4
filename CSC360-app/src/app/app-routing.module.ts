@@ -12,9 +12,9 @@ import { CalendarComponent } from './calendar/calendar.component';
 const routes: Routes = [
   {path: '', redirectTo: '/homepage', pathMatch: 'full'},
   {path: 'homepage', component: HomepageComponent},
-  {path: 'mytrips', component: MyTripsComponent},
-  {path: ':tripName/triphome', component: TriphomeComponent},
-  {path: 'newtrip', component: NewtripComponent},
+  {path: ':username/trips', component: MyTripsComponent},
+  {path: ':username/trips/trip/:tripid', component: TriphomeComponent},
+  {path: ':username/trips/newtrip', component: NewtripComponent},
   {path: 'flight-results', component: FlightResultsComponent},
   {path: 'login', component: LoginComponent},
   {path: 'budget', component: BudgetComponent},

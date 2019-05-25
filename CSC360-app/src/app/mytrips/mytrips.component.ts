@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {TripService} from '../trip.service';
 import {Trip} from '../trip';
 import {AngularFireList} from '@angular/fire/database';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-mytrips',
@@ -15,10 +16,13 @@ export class MyTripsComponent implements OnInit {
   hideWhenNoTrips = false;
   noTrips = false;
   preLoader = true;
+  userName: string;
 
-  constructor(private tripService: TripService) { }
+  constructor(private route: ActivatedRoute,
+              private tripService: TripService) { }
 
   ngOnInit() {
+    this.getUserName();
     this.dataState();
     let t = this.tripService.getTrips();
     t.snapshotChanges().subscribe( data => {
@@ -27,11 +31,14 @@ export class MyTripsComponent implements OnInit {
         let a = item.payload.toJSON();
         a['$key'] = item.key;
         let b = a as Trip;
-        if (b.user !== 'ggk') { this.trips.push(b); }
+        if (b.user === 'ggk') { this.trips.push(b); }
       });
     });
   }
-
+  // Grap username from route.
+  getUserName(): void {
+    this.userName = this.route.snapshot.paramMap.get('username');
+  }
   dataState() {
     this.tripService.getTrips().valueChanges().subscribe(data => {
       this.preLoader = false;
