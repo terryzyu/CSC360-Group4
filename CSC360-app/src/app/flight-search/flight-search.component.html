@@ -1,7 +1,11 @@
-<form>
+<form action="/action_page.php">
   <div class="form-group">
     <label for="inputFlightSearch">Flight Search</label>
-    <input type="search" class="form-control" id="inputFlightSearch" placeholder="Search for flights...">
+    <br>
+    <input list="cities" ng-keyup="refreshCities()" placeholder="Search for flights...">
+    <datalist id="cities">
+      <option *ngFor = "let city of cities" value={{city}}>
+    </datalist> 
+    <button type="submit" class="btn btn-default" routerLink="/flight-results">Search</button>
   </div>
-  <button type="submit" class="btn btn-default" routerLink="/flight-results">Search</button>
 </form>
