@@ -1,0 +1,19 @@
+<nav class="navbar navbar-dark bg-dark">
+    <a  href="javascript:void(0)" class="nav-item nav-link" (click)="goBack()">Back to Calendar</a>
+  <div class="container justify-content-center">
+      <span  class="navbar-brand mx-5">{{events.date |date:'MM/dd/yyyy'}}</span>
+    </div>
+</nav>
+
+<div class="container-fluid trips">
+  <div class="list-group">
+    <a class="list-group-item list-group-item-action w-100 mx-auto" >
+      <div class="row">
+        <div class="col-sm-3">{{events.name}}</div>
+      </div>
+    </a>
+  </div>
+</div>
+<p>
+  day works!
+</p>

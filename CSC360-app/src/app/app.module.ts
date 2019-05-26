@@ -16,6 +16,7 @@ import { LoginComponent } from './login/login.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { BudgetComponent } from './budget/budget.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import { DayComponent } from './day/day.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { CalendarComponent } from './calendar/calendar.component';
     LoginComponent,
     FlightSearchComponent,
     BudgetComponent,
-    CalendarComponent
+    CalendarComponent,
+    DayComponent
   ],
   imports: [
     BrowserModule,
