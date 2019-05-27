@@ -21,8 +21,8 @@
         <div class="col-sm-2">{{events.name}}</div>
         <div class="col-sm-2">{{events.date |date:'MM/dd/yyyy'}}</div>
         <div class="col-sm-2">{{events.budget}}</div>
-        <button class="col-sm-2 mr-5 btn btn-outline-success">Edit</button>
-        <button class="col-sm-2 btn btn-outline-danger">Delete</button>
+        <a href="#" class="col-sm-2 mr-5 btn btn-outline-success">Edit</a>
+        <button class="col-sm-2 btn btn-outline-danger" (click)="onDelete(events)" >Delete</button>
       </div>
     </li>
   </ul>

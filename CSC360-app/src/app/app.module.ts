@@ -16,6 +16,13 @@ import { LoginComponent } from './login/login.component';
 import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { BudgetComponent } from './budget/budget.component';
 import { CalendarComponent } from './calendar/calendar.component';
+import {HttpClientModule} from '@angular/common/http';
+
+import { AngularFireModule} from '@angular/fire';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+import {environment} from '../environments/environment';
+import { EditTripComponent } from './edit-trip/edit-trip.component';
+
 
 @NgModule({
   declarations: [
@@ -28,13 +35,17 @@ import { CalendarComponent } from './calendar/calendar.component';
     LoginComponent,
     FlightSearchComponent,
     BudgetComponent,
-    CalendarComponent
+    CalendarComponent,
+    EditTripComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     NgbModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
   providers: [],
   bootstrap: [AppComponent]
