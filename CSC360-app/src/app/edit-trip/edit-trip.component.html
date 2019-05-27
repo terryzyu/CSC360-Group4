@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="navbar-nav">
+    <a href="javascript:void(0)" class="nav-item nav-link" (click)="goBack()">Back</a>
+  </div>
+  <div class="container justify-content-center">
+    <span  class="navbar-brand mx-5">Edit {{trip.name}}</span>
+  </div>
+</nav>
+
+<div class="container-fluid" >
+  <form>
+    <div class="form-group">
+      <label for="tripname">Trip Name:</label>
+      <input type="text" class="form-control" id="tripname" [(ngModel)]="trip.name" name="name">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="startdate" class="mr-sm-2">Start Date:</label>
+        <input type="date" class="form-control mb-2 mr-sm-2" id="startdate" [(ngModel)]="trip.startDate" name="startDate">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="enddate" class="mr-sm-2">End Date:</label>
+        <input type="date" class="form-control mb-2 mr-sm-2" id="enddate" [(ngModel)]="trip.endDate" name="endDate">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="location">Location:</label>
+      <input type="text" class="form-control" id="location" placeholder="Location" [(ngModel)]="trip.location" name="location">
+    </div>
+    <div class="form-group">
+      <label for="location">Budget:</label>
+      <input type="number" class="form-control" id="budget" placeholder="0" [(ngModel)]="trip.budget" name="budget">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="updateTrip()">Submit</button>
+    <div class="form-group">
+      <p>
+        {{trip.startDate}} {{trip.endDate}}  {{trip.location}}
+      </p>
+    </div>
+  </form>
+
+</div>

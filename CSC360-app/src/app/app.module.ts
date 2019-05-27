@@ -21,6 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
 import { AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from '../environments/environment';
+import { EditTripComponent } from './edit-trip/edit-trip.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import {environment} from '../environments/environment';
     LoginComponent,
     FlightSearchComponent,
     BudgetComponent,
-    CalendarComponent
+    CalendarComponent,
+    EditTripComponent
   ],
   imports: [
     BrowserModule,
