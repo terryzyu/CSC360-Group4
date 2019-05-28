@@ -2,7 +2,7 @@
   <div class="form-group">
     <label for="inputFlightSearch">Flight Search</label>
     <br>
-    <input list="cities" (keyup)="refreshCities()" placeholder="Search for flights...">
+    <input list="cities" (keyup)="refreshCities($event)" placeholder="Search for flights...">
     <datalist id="cities">
       <option *ngFor = "let city of cities" value={{city}}>
     </datalist> 

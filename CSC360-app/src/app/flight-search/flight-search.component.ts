@@ -9,20 +9,25 @@ import { MockCities, } from '../mock-cities';
 export class FlightSearchComponent implements OnInit {
 
   CITIES = new MockCities();
-  cities = this.CITIES.getCities();
-  timeout = null;
+  cities: String[] = null;
+  //timeCount = 1;
 
   constructor() { }
 
   ngOnInit() {
   }
 
-  refreshCities() {
+  refreshCities(event) {
     // TODO: update data on timeout
-    clearTimeout(this.timeout);
-    this.timeout = setTimeout(function () {
-      this.CITIES.refreshCities();
+    //if (this.timeCount % 2 == 0) {
+
+      this.CITIES.refreshCities(event.target.value);
       this.cities = this.CITIES.getCities();
-    }, 500);
+      //this.timeCount = 1;
+
+    /*} else {
+
+      this.timeCount += 1;
+    }*/
   }
 }
