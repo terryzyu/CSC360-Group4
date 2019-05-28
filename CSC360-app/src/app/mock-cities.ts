@@ -16,10 +16,9 @@ export class MockCities {
         return this.CITIES;
     }
 
-    /*
-    refreshCities() {
+    public refreshCities() {
         this.CITIES[0] = "New City " + this.count;
         this.count++;
+        console.log(this.CITIES[0]);
     }
-    */
 }

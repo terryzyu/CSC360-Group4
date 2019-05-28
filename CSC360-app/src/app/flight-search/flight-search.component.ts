@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MockCities } from '../mock-cities';
+import { MockCities, } from '../mock-cities';
 
 @Component({
   selector: 'app-flight-search',
@@ -10,6 +10,7 @@ export class FlightSearchComponent implements OnInit {
 
   CITIES = new MockCities();
   cities = this.CITIES.getCities();
+  timeout = null;
 
   constructor() { }
 
@@ -17,7 +18,11 @@ export class FlightSearchComponent implements OnInit {
   }
 
   refreshCities() {
-    // TODO: set up timer to check if user is finished typing
+    // TODO: update data on timeout
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(function () {
+      this.CITIES.refreshCities();
+      this.cities = this.CITIES.getCities();
+    }, 500);
   }
-
 }
