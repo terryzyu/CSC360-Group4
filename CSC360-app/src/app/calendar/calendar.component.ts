@@ -75,10 +75,12 @@ export class CalendarComponent implements OnInit {
         events.length === 0
       ) {
         this.activeDayIsOpen = false;
+        
       } else {
         this.activeDayIsOpen = true;
       }
     }
+    window.open("/day", "_self");
   }
 
   eventTimesChanged({

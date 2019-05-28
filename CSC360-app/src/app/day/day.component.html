@@ -9,7 +9,9 @@
   <div class="list-group">
     <a class="list-group-item list-group-item-action w-100 mx-auto" >
       <div class="row">
-        <div class="col-sm-3">{{events.name}}</div>
+        <div class="col-sm-3"> 
+          <ul *ngFor="let event of EventsList" >{{event.name}}</ul>
+        </div>
       </div>
     </a>
   </div>
@@ -17,3 +19,4 @@
 <p>
   day works!
 </p>
+

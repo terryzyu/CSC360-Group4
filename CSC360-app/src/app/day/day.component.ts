@@ -1,6 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-
+import { BudgetComponent } from '../budget/budget.component';
+import { CalendarComponent } from '../calendar/calendar.component';
+import { Events } from '../events';
+import { EVENTS } from '../mock-events';
 
 @Component({
   selector: 'app-day',
@@ -9,11 +12,14 @@ import { Location } from '@angular/common';
 })
 export class DayComponent implements OnInit {
 
-  constructor(private location: Location) { }
+  EventsList: Events[] ;
+
+  constructor(private location: Location) {}
 
   ngOnInit() {
-    
+    this.EventsList = EVENTS;
   }
+  
 
   goBack() {
     this.location.back();
