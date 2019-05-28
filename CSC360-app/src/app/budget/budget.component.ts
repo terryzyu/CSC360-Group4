@@ -13,6 +13,7 @@ import {EventsService} from '../events.service';
 })
 export class BudgetComponent implements OnInit {
   Events: Events[];
+  selectedEvent: Events;
 
   constructor(private eventsService: EventsService,
               private location: Location) { }
@@ -29,7 +30,15 @@ export class BudgetComponent implements OnInit {
     this.location.back();
   }
 
-  onDelete(arrayElement: Events) {
-    this.Events = this.Events.filter(obj => obj !== arrayElement);
+  onDelete(id) {
+    this.Events.splice(id - 1, 1);
+  }
+
+  onSelect(event: Events): void {
+    this.selectedEvent = event;
+  }
+
+  onDone(event: Events): void {
+    this.selectedEvent
   }
 }

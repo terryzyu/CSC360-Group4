@@ -22,4 +22,5 @@ export class EventsService {
   addEvents(newEvents: Events): void {
     EVENTS.push(newEvents);
   }
+
 }

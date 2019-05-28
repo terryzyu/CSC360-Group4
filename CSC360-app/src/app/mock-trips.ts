@@ -1,4 +1,5 @@
 import {Trip} from './trip';
+import {Events} from './events';
 
 export const TRIPS: Trip[] = [
   {name: 'Vegas Baby', location: 'Las Vegas', budget: 1750, startDate: new Date(2019, 5, 22),
