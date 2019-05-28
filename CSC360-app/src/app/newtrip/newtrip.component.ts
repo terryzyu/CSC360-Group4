@@ -5,6 +5,7 @@ import { Trip } from '../trip';
 import { Location } from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
 
+
 @Component({
   selector: 'app-newtrip',
   templateUrl: './newtrip.component.html',

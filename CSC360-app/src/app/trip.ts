@@ -1,3 +1,5 @@
+import {Events} from './events';
+
 export class Trip {
   constructor(
     public startDate: Date =  new Date(),
