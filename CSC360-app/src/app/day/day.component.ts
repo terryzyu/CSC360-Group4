@@ -18,6 +18,7 @@ export class DayComponent implements OnInit {
 
   ngOnInit() {
     this.EventsList = EVENTS;
+    this.EventsList.push(new Events(new Date("5/31/2019"), 2700, "Arcade"))
   }
   
 
