@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -27,6 +28,7 @@ import { AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
 import {environment} from '../environments/environment';
 import { EditTripComponent } from './edit-trip/edit-trip.component';
+import { NewUserComponent } from './new-user/new-user.component';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { EditTripComponent } from './edit-trip/edit-trip.component';
     DayComponent,
     EventAddComponent,
     CalendarComponent,
-    EditTripComponent
+    EditTripComponent,
+    NewUserComponent
   ],
   imports: [
     CommonModule,

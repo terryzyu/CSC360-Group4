@@ -24,14 +24,13 @@ export class MyTripsComponent implements OnInit {
   ngOnInit() {
     this.getUserName();
     this.dataState();
-    let t = this.tripService.getTrips();
+    let t = this.tripService.getTripsByUserId('-Lg0ir26GSjcH6BE5LBE');
     t.snapshotChanges().subscribe( data => {
       this.trips = [];
       data.forEach( item => {
         let a = item.payload.toJSON();
         a['$key'] = item.key;
-        let b = a as Trip;
-        if (b.user === 'ggk') { this.trips.push(b); }
+        this.trips.push(a as Trip);
       });
     });
   }
@@ -40,7 +39,7 @@ export class MyTripsComponent implements OnInit {
     this.userName = this.route.snapshot.paramMap.get('username');
   }
   dataState() {
-    this.tripService.getTrips().valueChanges().subscribe(data => {
+    this.tripService.getTripsByUserId('-Lg0ir26GSjcH6BE5LBE').valueChanges().subscribe(data => {
       this.preLoader = false;
       if (data.length <= 0) {
         this.hideWhenNoTrips = false;
@@ -50,11 +49,5 @@ export class MyTripsComponent implements OnInit {
         this.noTrips = false;
       }
     });
-}
-// Method to delete student object
-  deleteStudent(student) {
-    if (window.confirm('Are sure you want to delete this Trip ?')) { // Asking from user before Deleting student data.
-    this.tripService.deleteTrip(student.$key); // Using Delete student API to delete student.
-    }
   }
 }

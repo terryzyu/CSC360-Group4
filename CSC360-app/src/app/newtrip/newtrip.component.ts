@@ -13,6 +13,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class NewtripComponent implements OnInit {
   tripDate = 'May-32-2019';
+  // @ts-ignore
   newTrip: Trip = new Trip( );
   userName: string;
   constructor(
@@ -32,7 +33,6 @@ export class NewtripComponent implements OnInit {
 }
 
   onSubmit(): void {
-    this.newTrip.user = this.userName;
     this.tripService.addTrip(this.newTrip);
     this.goBack();
   }

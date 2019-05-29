@@ -37,7 +37,7 @@ export class TriphomeComponent implements OnInit {
 
   getTrip(): void {
     this.tripID = this.route.snapshot.paramMap.get('tripid');
-    this.tripService.getTrip(this.tripID).valueChanges()
+    this.tripService.getTrip(this.userName, this.tripID).valueChanges()
     .subscribe(data => {this.mytrip = data as Trip; this.getWeather(); }, error => this.error = error);
   }
 
@@ -50,7 +50,7 @@ export class TriphomeComponent implements OnInit {
   // Method to delete student object
   deleteTrip() {
     if (window.confirm('Are sure you want to delete this Trip ?')) { // Asking from user before Deleting student data.
-      this.tripService.deleteTrip(this.tripID); // Using Delete student API to delete student.
+      this.tripService.deleteTrip(this.userName, this.tripID); // Using Delete student API to delete student.
     }
     this.goBack();
   }

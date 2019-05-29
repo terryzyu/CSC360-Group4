@@ -30,12 +30,11 @@ export class EditTripComponent implements OnInit {
 
   getTrip(): void {
     this.tripId = this.route.snapshot.paramMap.get('tripid');
-    this.tripService.getTrip(this.tripId).valueChanges().
+    this.tripService.getTrip(this.userName, this.tripId).valueChanges().
     subscribe(data => this.trip = data as Trip);
   }
 
   updateTrip(): void {
-    this.trip.user = this.userName;
     this.tripService.updateTrip(this.trip);
     this.goBack();
   }

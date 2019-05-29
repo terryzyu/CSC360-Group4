@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {Events} from '../events';
+import {Event} from '../event';
 import {EventsService} from '../events.service';
 import {Location} from '@angular/common';
 
@@ -9,8 +9,8 @@ import {Location} from '@angular/common';
   styleUrls: ['./event-add.component.css']
 })
 export class EventAddComponent implements OnInit {
-  indexer: number = Events.length;
-  eventAdd: Events = new Events(this.indexer - 1);
+  indexer: number = Event.length;
+  eventAdd: Event = new Event(this.indexer - 1);
   constructor(private eventsService: EventsService,
               private location: Location) { }
 

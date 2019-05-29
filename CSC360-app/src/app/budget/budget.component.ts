@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 
 
-import {Events} from '../events';
+import {Event} from '../event';
 import {EventsService} from '../events.service';
 
 
@@ -12,8 +12,8 @@ import {EventsService} from '../events.service';
   styleUrls: ['./budget.component.css']
 })
 export class BudgetComponent implements OnInit {
-  Events: Events[];
-  selectedEvent: Events;
+  Events: Event[];
+  selectedEvent: Event;
 
   constructor(private eventsService: EventsService,
               private location: Location) { }
@@ -34,11 +34,11 @@ export class BudgetComponent implements OnInit {
     this.Events.splice(id - 1, 1);
   }
 
-  onSelect(event: Events): void {
+  onSelect(event: Event): void {
     this.selectedEvent = event;
   }
 
-  onDone(event: Events): void {
-    this.selectedEvent
+  onDone(event: Event): void {
+    this.selectedEvent;
   }
 }

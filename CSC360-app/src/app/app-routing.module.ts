@@ -11,6 +11,7 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { DayComponent } from './day/day.component';
 import {EditTripComponent} from './edit-trip/edit-trip.component';
 import {EventAddComponent} from './event-add/event-add.component';
+import {NewUserComponent} from './new-user/new-user.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/homepage', pathMatch: 'full'},
@@ -24,7 +25,8 @@ const routes: Routes = [
   {path: 'budget', component: BudgetComponent},
   {path: 'calendar', component: CalendarComponent},
   {path: 'day', component: DayComponent},
-  {path: 'event-add', component: EventAddComponent}
+  {path: 'event-add', component: EventAddComponent},
+  {path: 'new-user', component: NewUserComponent}
 ];
 
 @NgModule({
