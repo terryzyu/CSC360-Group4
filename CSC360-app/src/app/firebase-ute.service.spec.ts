@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EventsService } from './events.service';
+import { FirebaseUTEService } from './firebase-ute.service';
 
-describe('EventsService', () => {
+describe('FirebaseUTEService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: EventsService = TestBed.get(EventsService);
+    const service: FirebaseUTEService = TestBed.get(FirebaseUTEService);
     expect(service).toBeTruthy();
   });
 });

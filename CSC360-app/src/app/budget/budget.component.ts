@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {Location} from '@angular/common';
 
-
 import {Event} from '../event';
-import {EventsService} from '../events.service';
+import {FirebaseUTEService} from '../firebase-ute.service';
+import {Router} from '@angular/router';
+
 
 
 @Component({
@@ -12,33 +13,65 @@ import {EventsService} from '../events.service';
   styleUrls: ['./budget.component.css']
 })
 export class BudgetComponent implements OnInit {
+  p = 1;
   Events: Event[];
   selectedEvent: Event;
+  hideWhenNoEvents = false;
+  noEvents = false;
+  preLoader = true;
 
-  constructor(private eventsService: EventsService,
-              private location: Location) { }
+  constructor(private location: Location,
+              private fbUTEService: FirebaseUTEService,
+              private router: Router) { }
 
   ngOnInit() {
-    this.getEvents();
+    this.dataState();
+    let t = this.fbUTEService.getEventsByUserId();
+    t.snapshotChanges().subscribe( data => {
+      this.Events = [];
+      data.forEach( item => {
+        let a = item.payload.toJSON();
+        a['$key'] = item.key;
+        this.Events.push(a as Event);
+      });
+    });
   }
 
-  private getEvents() {
-    this.eventsService.getEvents().subscribe(event => this.Events = event);
+  dataState() {
+    this.fbUTEService.getTripsByUserId().valueChanges().subscribe(data => {
+      this.preLoader = false;
+      if (data.length <= 0) {
+        this.hideWhenNoEvents = false;
+        this.noEvents = true;
+      } else {
+        this.hideWhenNoEvents = true;
+        this.noEvents = false;
+      }
+    });
   }
 
+  goToEvent( eventId: string, eventName: string) {
+    this.fbUTEService.setEventId(eventId);
+    this.router.navigate([`/budget/{{eventName}}`]);
+  }
   goBack() {
     this.location.back();
   }
 
-  onDelete(id) {
-    this.Events.splice(id - 1, 1);
+  onDelete(event: Event, eventId: string) {
+    this.selectedEvent = event
+    this.fbUTEService.setEventId(eventId)
+    this.fbUTEService.deleteEvent();
+    this.selectedEvent = null;
   }
 
-  onSelect(event: Event): void {
+  onSelect(event: Event, eventId: string): void {
     this.selectedEvent = event;
+    this.fbUTEService.setEventId(eventId);
   }
 
   onDone(event: Event): void {
-    this.selectedEvent;
+    this.selectedEvent = null;
+    this.fbUTEService.updateEvent(event);
   }
 }

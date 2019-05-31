@@ -31,7 +31,7 @@ export class EventService {
   }
 
   // Fetch an event by event id
-  getTrip(userid: string, tripid: string, eventid: string) {
+  getEvent(userid: string, tripid: string, eventid: string) {
     this.tripRef = this.db.object(this.basePath + userid + this.tripPath + tripid + this.eventPath + '/' + eventid);
     return this.tripRef;
   }
@@ -46,7 +46,7 @@ export class EventService {
   }
 
   // Update an event
-  updateTrip(event: Event) {
+  updateEvent(event: Event) {
     this.tripRef.update({
       date: event.date,
       budget: event.budget,
@@ -54,8 +54,8 @@ export class EventService {
     });
   }
 
-  // Delete a trip
-  deleteTrip(userid: string, tripid: string, eventid: string) {
+  // Delete an event
+  deleteEvent(userid: string, tripid: string, eventid: string) {
     this.tripRef = this.db.object(this.basePath + userid + this.tripPath + tripid + this.eventPath + '/' + eventid);
     this.tripRef.remove();
   }
