@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
-import {TripService} from '../trip.service';
 import {Trip} from '../trip';
 import {AngularFireList} from '@angular/fire/database';
-import {ActivatedRoute} from '@angular/router';
+import { Router, ActivatedRoute} from '@angular/router';
+import {FirebaseUTEService} from '../firebase-ute.service';
 
 @Component({
   selector: 'app-mytrips',
@@ -19,28 +19,25 @@ export class MyTripsComponent implements OnInit {
   userName: string;
 
   constructor(private route: ActivatedRoute,
-              private tripService: TripService) { }
+              private fbUTEService: FirebaseUTEService,
+              private router: Router) { }
 
   ngOnInit() {
-    this.getUserName();
     this.dataState();
-    let t = this.tripService.getTrips();
+    this.fbUTEService.setUserId('-Lg0ir26GSjcH6BE5LBE')
+    let t = this.fbUTEService.getTripsByUserId();
     t.snapshotChanges().subscribe( data => {
       this.trips = [];
       data.forEach( item => {
         let a = item.payload.toJSON();
         a['$key'] = item.key;
-        let b = a as Trip;
-        if (b.user === 'ggk') { this.trips.push(b); }
+        this.trips.push(a as Trip);
       });
     });
   }
-  // Grap username from route.
-  getUserName(): void {
-    this.userName = this.route.snapshot.paramMap.get('username');
-  }
+
   dataState() {
-    this.tripService.getTrips().valueChanges().subscribe(data => {
+    this.fbUTEService.getTripsByUserId().valueChanges().subscribe(data => {
       this.preLoader = false;
       if (data.length <= 0) {
         this.hideWhenNoTrips = false;
@@ -50,11 +47,10 @@ export class MyTripsComponent implements OnInit {
         this.noTrips = false;
       }
     });
-}
-// Method to delete student object
-  deleteStudent(student) {
-    if (window.confirm('Are sure you want to delete this Trip ?')) { // Asking from user before Deleting student data.
-    this.tripService.deleteTrip(student.$key); // Using Delete student API to delete student.
-    }
+  }
+
+  goToTrip( tripId: string, tripName: string) {
+    this.fbUTEService.setTripId(tripId);
+    this.router.navigate([`/trips/{{tripName}}`]);
   }
 }

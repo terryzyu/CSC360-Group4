@@ -24,7 +24,7 @@
   <a routerLink="/calendar" class="list-group-item list-group-item-action w-25 mx-auto" >Calendar</a>
 </div>
 <div class="btn-group" role="group" aria-label="Edit and Delete">
-  <a routerLink="/{{userName}}/trips/trip/{{tripID}}/edit" class="btn btn-outline-success"> Edit </a>
+  <a routerLink="/trips/{{mytrip.name}}/edit" class="btn btn-outline-success"> Edit </a>
   <button class="btn btn-outline-danger" (click)="deleteTrip()" >Delete</button>
 </div>
 

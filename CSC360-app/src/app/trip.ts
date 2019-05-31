@@ -1,4 +1,4 @@
-import {Events} from './events';
+import {Event} from './event';
 
 export class Trip {
   constructor(
@@ -7,6 +7,6 @@ export class Trip {
     public location: string = 'New York',
     public budget: number = 0,
     public name: string = 'New Trip',
-    public user: string = 'ggk'
+    public events: Event[] = []
   ) {}
 }

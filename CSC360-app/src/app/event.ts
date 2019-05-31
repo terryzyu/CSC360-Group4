@@ -1,4 +1,4 @@
-export class Events {
+export class Event {
   constructor(
     public id: number = 0,
     public date: Date =  new Date(),

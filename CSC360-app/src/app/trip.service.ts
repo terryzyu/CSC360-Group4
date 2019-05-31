@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, of} from 'rxjs';
 
 import { Trip} from './trip';
-import {TRIPS} from './mock-trips';
 
 import { AngularFireDatabase, AngularFireList, AngularFireObject} from '@angular/fire/database';
 
@@ -11,7 +10,8 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject} from '@angular
 })
 export class TripService {
 
-  private basePath = '/trips';
+  private basePath = 'users/';
+  private tripPath = '/trips';
 
   private tripsRef: AngularFireList<any>;
   private tripRef: AngularFireObject<any>;
@@ -23,9 +23,15 @@ export class TripService {
     return this.tripsRef;
   }
 
+  // Fetch all trips by user id.
+  getTripsByUserId(userid: string) {
+    this.tripsRef = this.db.list(this.basePath + userid + this.tripPath );
+    return this.tripsRef;
+  }
+
   // Fetch trip by username
-  getTrip(user: string) {
-    this.tripRef = this.db.object(this.basePath + '/' + user);
+  getTrip(userid: string, tripid: string) {
+    this.tripRef = this.db.object(this.basePath + userid + this.tripPath + '/' + tripid);
     return this.tripRef;
   }
 
@@ -36,7 +42,7 @@ export class TripService {
       startDate: newTrip.startDate,
       endDate: newTrip.endDate,
       budget: newTrip.budget,
-      user: newTrip.user
+      events: newTrip.events
     });
   }
 
@@ -48,13 +54,12 @@ export class TripService {
       startDate: trip.startDate,
       endDate: trip.endDate,
       budget: trip.budget,
-      user: trip.user
       });
   }
 
   // Delete a trip
-  deleteTrip(user: string){
-    this.tripRef = this.db.object(this.basePath + '/' + user);
+  deleteTrip(userid: string, tripid: string) {
+    this.tripRef = this.db.object(this.basePath + userid + this.tripPath + '/' + tripid);
     this.tripRef.remove();
   }
 }

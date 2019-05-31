@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {TripService} from '../trip.service';
+import { FirebaseUTEService} from '../firebase-ute.service';
 import {Location} from '@angular/common';
 import {Trip} from '../trip';
 
@@ -16,27 +17,21 @@ export class EditTripComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private tripService: TripService,
-              private location: Location
+              private location: Location,
+              private fbUTEService: FirebaseUTEService
   ) { }
 
   ngOnInit() {
-    this.getUserName();
     this.getTrip();
   }
 
-  getUserName(): void {
-    this.userName = this.route.snapshot.paramMap.get('username');
-  }
-
   getTrip(): void {
-    this.tripId = this.route.snapshot.paramMap.get('tripid');
-    this.tripService.getTrip(this.tripId).valueChanges().
+    this.fbUTEService.getTrip().valueChanges().
     subscribe(data => this.trip = data as Trip);
   }
 
   updateTrip(): void {
-    this.trip.user = this.userName;
-    this.tripService.updateTrip(this.trip);
+    this.fbUTEService.updateTrip(this.trip);
     this.goBack();
   }
 

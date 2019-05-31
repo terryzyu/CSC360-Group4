@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import {TripService} from '../trip.service';
+import {FirebaseUTEService} from '../firebase-ute.service';
 import { Trip } from '../trip';
 import { Location } from '@angular/common';
 import {ActivatedRoute} from '@angular/router';
@@ -13,27 +13,21 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class NewtripComponent implements OnInit {
   tripDate = 'May-32-2019';
+  // @ts-ignore
   newTrip: Trip = new Trip( );
   userName: string;
   constructor(
     private route: ActivatedRoute,
-    private tripService: TripService,
-    private location: Location) { }
+    private location: Location,
+    private fbUTEService: FirebaseUTEService) { }
 
   ngOnInit() {
-    this.getUserName();
     this.newTrip.startDate.setFullYear(1970, 0, 1);
     this.newTrip.endDate.setFullYear(1970, 0, 2);
   }
 
-  getUserName(): void {
-    this.userName = this.route.snapshot.paramMap.get('username');
-    console.log(this.userName);
-}
-
   onSubmit(): void {
-    this.newTrip.user = this.userName;
-    this.tripService.addTrip(this.newTrip);
+    this.fbUTEService.addTrip(this.newTrip);
     this.goBack();
   }
 

@@ -3,9 +3,8 @@ import { ActivatedRoute} from '@angular/router';
 import { Location} from '@angular/common';
 
 import { Trip } from '../trip';
-import { TripService} from '../trip.service';
 import { Weather, WeatherService} from '../weather.service';
-
+import { FirebaseUTEService} from '../firebase-ute.service';
 
 
 @Component({
@@ -23,8 +22,8 @@ export class TriphomeComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private location: Location,
-              private tripService: TripService,
-              private weatherService: WeatherService) { }
+              private weatherService: WeatherService,
+              private fbUTEService: FirebaseUTEService) { }
 
   ngOnInit() {
     this.getUserName();
@@ -37,7 +36,7 @@ export class TriphomeComponent implements OnInit {
 
   getTrip(): void {
     this.tripID = this.route.snapshot.paramMap.get('tripid');
-    this.tripService.getTrip(this.tripID).valueChanges()
+    this.fbUTEService.getTrip().valueChanges()
     .subscribe(data => {this.mytrip = data as Trip; this.getWeather(); }, error => this.error = error);
   }
 
@@ -50,7 +49,7 @@ export class TriphomeComponent implements OnInit {
   // Method to delete student object
   deleteTrip() {
     if (window.confirm('Are sure you want to delete this Trip ?')) { // Asking from user before Deleting student data.
-      this.tripService.deleteTrip(this.tripID); // Using Delete student API to delete student.
+      this.fbUTEService.deleteTrip(); // Using Delete student API to delete student.
     }
     this.goBack();
   }

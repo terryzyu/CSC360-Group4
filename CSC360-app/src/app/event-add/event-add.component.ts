@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {Events} from '../events';
-import {EventsService} from '../events.service';
+import {Event} from '../event';
+import {FirebaseUTEService} from '../firebase-ute.service';
 import {Location} from '@angular/common';
+
 
 @Component({
   selector: 'app-event-add',
@@ -9,17 +10,17 @@ import {Location} from '@angular/common';
   styleUrls: ['./event-add.component.css']
 })
 export class EventAddComponent implements OnInit {
-  indexer: number = Events.length;
-  eventAdd: Events = new Events(this.indexer - 1);
-  constructor(private eventsService: EventsService,
-              private location: Location) { }
+  indexer: number = Event.length;
+  eventAdd: Event = new Event(this.indexer - 1);
+  constructor(private location: Location,
+              private fbUTEService: FirebaseUTEService) { }
 
   ngOnInit() {
     this.eventAdd.date.setFullYear( 2019, 0, 1);
   }
 
   onSubmit(): void {
-    this.eventsService.addEvents(this.eventAdd);
+    this.fbUTEService.addEvent(this.eventAdd);
     this.location.back();
   }
 

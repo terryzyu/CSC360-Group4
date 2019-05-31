@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  <div class="navbar-nav">
+    <a href="javascript:void(0)" class="nav-item nav-link" (click)="goBack()">Back</a>
+  </div>
+  <div class="container justify-content-center">
+    <span  class="navbar-brand mx-5">New User</span>
+  </div>
+</nav>
+
+<div class="container-fluid" >
+  <form>
+    <div class="form-group">
+      <label for="username">User Name:</label>
+      <input type="text" class="form-control" id="username" [(ngModel)]="newUser.username" name="userName">
+    </div>
+    <div class="form-group">
+      <label for="password">Passowrd:</label>
+      <input type="password" class="form-control" id="password" [(ngModel)]="newUser.password" name="password">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-6">
+        <label for="firstname" class="mr-sm-2">First Name:</label>
+        <input type="text" class="form-control mb-2 mr-sm-2" id="firstname" [(ngModel)]="newUser.firstname" name="firstName">
+      </div>
+      <div class="form-group col-md-6">
+        <label for="lastname" class="mr-sm-2">Last Name:</label>
+        <input type="text" class="form-control mb-2 mr-sm-2" id="lastname" [(ngModel)]="newUser.lastname" name="LastName">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="user@email.com" [(ngModel)]="newUser.email" name="Email">
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="onSubmit()">Submit</button>
+    <div class="form-group">
+      <p>
+        {{newUser.username}} {{newUser.email}}  {{newUser.password}}
+      </p>
+    </div>
+  </form>
+
+</div>
