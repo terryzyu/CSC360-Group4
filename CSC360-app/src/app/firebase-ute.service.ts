@@ -41,7 +41,7 @@ export class FirebaseUTEService {
 
   // Fetch user by id
   getUser() {
-    this.userRef = this.db.object(this.basePath + '/' + this.userId);
+    this.userRef = this.db.object(this.basePath + this.userId);
     return this.userRef;
   }
 
@@ -71,7 +71,7 @@ export class FirebaseUTEService {
 
   // Delete a User
   deleteUser() {
-    this.userRef = this.db.object(this.basePath + '/' + this.userId);
+    this.userRef = this.db.object(this.basePath + this.userId);
     this.userRef.remove();
   }
 
@@ -128,14 +128,14 @@ export class FirebaseUTEService {
 
   // Fetch all Events.
   getEvents() {
-    this.tripsRef = this.db.list(this.basePath);
-    return this.tripsRef;
+    this.eventsRef = this.db.list(this.basePath);
+    return this.eventRef;
   }
 
   // Fetch all Events belonging to a user,trip pair .
   getEventsByUserId() {
-    this.tripsRef = this.db.list(this.basePath + this.userId + this.tripPath + this.tripId + this.eventPath);
-    return this.tripsRef;
+    this.eventsRef = this.db.list(this.basePath + this.userId + this.tripPath + '/' + this.tripId + '/' + this.eventPath);
+    return this.eventsRef;
   }
   // Set Event ID
   setEventId(eventid: string) {
@@ -143,13 +143,13 @@ export class FirebaseUTEService {
   }
   // Fetch an event by event id
   getEvent() {
-    this.tripRef = this.db.object(this.basePath + this.userId + this.tripPath + this.tripId + this.eventPath + '/' + this.eventId);
-    return this.tripRef;
+    this.eventRef = this.db.object(this.basePath + this.userId + this.tripPath + '/' + this.tripId + this.eventPath + '/' + this.eventId);
+    return this.eventRef;
   }
 
   // Add a new Event
   addEvent(newEvent: Event): void {
-    this.tripsRef.push({
+    this.eventsRef.push({
       date: newEvent.date,
       budget: newEvent.budget,
       name: newEvent.name
@@ -158,7 +158,7 @@ export class FirebaseUTEService {
 
   // Update an event
   updateEvent(event: Event) {
-    this.tripRef.update({
+    this.eventRef.update({
       date: event.date,
       budget: event.budget,
       name: event.name
@@ -167,7 +167,7 @@ export class FirebaseUTEService {
 
   // Delete an event
   deleteEvent() {
-    this.tripRef = this.db.object(this.basePath + this.userId + this.tripPath + this.tripId + this.eventPath + '/' + this.eventId);
-    this.tripRef.remove();
+    this.eventRef = this.db.object(this.basePath + this.userId + this.tripPath + '/' + this.tripId + this.eventPath + '/' + this.eventId);
+    this.eventRef.remove();
   }
 }

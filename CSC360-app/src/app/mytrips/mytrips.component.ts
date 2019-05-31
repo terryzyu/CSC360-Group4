@@ -51,6 +51,6 @@ export class MyTripsComponent implements OnInit {
 
   goToTrip( tripId: string, tripName: string) {
     this.fbUTEService.setTripId(tripId);
-    this.router.navigate([`/trips/{{tripName}}`]);
+    this.router.navigate([`/trips/${tripName}`]);
   }
 }
