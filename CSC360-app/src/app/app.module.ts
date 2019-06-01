@@ -24,11 +24,17 @@ import { CalendarComponent } from './calendar/calendar.component';
 import { DayComponent } from './day/day.component';
 import { EventAddComponent } from './event-add/event-add.component';
 import {HttpClientModule} from '@angular/common/http';
+
 import { AngularFireModule} from '@angular/fire';
 import { AngularFireDatabaseModule} from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth'
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from './auth.service';
+
 import {environment} from '../environments/environment';
 import { EditTripComponent } from './edit-trip/edit-trip.component';
 import { NewUserComponent } from './new-user/new-user.component';
+
 
 
 @NgModule({
@@ -64,9 +70,10 @@ import { NewUserComponent } from './new-user/new-user.component';
     FormsModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthService],
   exports: [CalendarComponent],
   bootstrap: [AppComponent]
 })
