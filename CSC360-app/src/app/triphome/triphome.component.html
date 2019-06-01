@@ -2,15 +2,14 @@
 
 <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
   <div class="navbar-nav">
-    <a href="javascript:void(0)" class="nav-item nav-link" (click)="goBack()">Back</a>
+    <a routerLink="/mytrips" class="nav-item nav-link">Back</a>
   </div>
   <div class="container justify-content-center">
     <span  class="navbar-brand mx-5">{{mytrip.name}}</span>
   </div>
   <div class="navebar-nav">
     <a routerLink="/weather" class="nav-link navbar-right">
-      <!--<img src="assets/sunny-cartoon-weather-clipart-1.jpg" style="width:40px" alt="Sunny"> -->
-      {{weather.main.temp}}
+      <img src="assets/sunny-cartoon-weather-clipart-1.jpg" style="width:40px" alt="Sunny">
     </a>
   </div>
 </nav>
@@ -23,9 +22,3 @@
   <a routerLink="/budget" class="list-group-item list-group-item-action w-25 mx-auto" >Budget Breakdown</a>
   <a routerLink="/calendar" class="list-group-item list-group-item-action w-25 mx-auto" >Calendar</a>
 </div>
-<div class="btn-group" role="group" aria-label="Edit and Delete">
-  <a routerLink="/trips/{{mytrip.name}}/edit" class="btn btn-outline-success"> Edit </a>
-  <button class="btn btn-outline-danger" (click)="deleteTrip()" >Delete</button>
-</div>
-
-<p *ngIf="error" class="jasmine-errored"> {{error | json}}</p>

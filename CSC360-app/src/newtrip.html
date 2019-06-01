@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <title>Create Trip</title>
+</head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <div class="navbar-nav">
+      <a routerLink="/mytrips" class="nav-item nav-link">Back</a>
+    </div>
+    <div class="container justify-content-center">
+      <span  class="navbar-brand mx-5">{{tripDate}}</span>
+    </div>
+  </nav>
+
+  <div class="container-fluid" >
+    <form>
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="startdate" class="mr-sm-2">Start Date:</label>
+          <input type="date" class="form-control mb-2 mr-sm-2" id="startdate">
+        </div>
+        <div class="form-group col-md-6">
+          <label for="enddate" class="mr-sm-2">End Date:</label>
+          <input type="date" class="form-control mb-2 mr-sm-2" id="enddate">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="location">Location:</label>
+        <input type="text" class="form-control" id="location" placeholder="Location">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+  </div>
+</body>
+</html>
