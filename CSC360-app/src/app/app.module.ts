@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
@@ -21,6 +22,20 @@ import { FlightSearchComponent } from './flight-search/flight-search.component';
 import { BudgetComponent } from './budget/budget.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { DayComponent } from './day/day.component';
+import { EventAddComponent } from './event-add/event-add.component';
+import {HttpClientModule} from '@angular/common/http';
+
+import { AngularFireModule} from '@angular/fire';
+import { AngularFireDatabaseModule} from '@angular/fire/database';
+import { AngularFireAuthModule } from '@angular/fire/auth'
+import { AngularFireAuth } from '@angular/fire/auth';
+import { AuthService } from './auth.service';
+
+import {environment} from '../environments/environment';
+import { EditTripComponent } from './edit-trip/edit-trip.component';
+import { NewUserComponent } from './new-user/new-user.component';
+
+
 
 @NgModule({
   declarations: [
@@ -34,7 +49,11 @@ import { DayComponent } from './day/day.component';
     FlightSearchComponent,
     BudgetComponent,
     CalendarComponent,
-    DayComponent
+    DayComponent,
+    EventAddComponent,
+    CalendarComponent,
+    EditTripComponent,
+    NewUserComponent
   ],
   imports: [
     CommonModule,
@@ -47,9 +66,14 @@ import { DayComponent } from './day/day.component';
       provide: DateAdapter,
       useFactory: adapterFactory
     }),
-    FormsModule
+    NgbModule,
+    FormsModule,
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
-  providers: [],
+  providers: [AuthService],
   exports: [CalendarComponent],
   bootstrap: [AppComponent]
 })

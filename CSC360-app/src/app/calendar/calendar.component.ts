@@ -6,6 +6,7 @@ import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMo
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
+import {Router} from '@angular/router';
 
 const colors: any = {
   red: {
@@ -65,7 +66,9 @@ export class CalendarComponent implements OnInit {
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal, private location: Location) {}
+  constructor(private modal: NgbModal,
+              private location: Location,
+              private router: Router) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -75,12 +78,12 @@ export class CalendarComponent implements OnInit {
         events.length === 0
       ) {
         this.activeDayIsOpen = false;
-        
+
       } else {
         this.activeDayIsOpen = true;
       }
     }
-    window.open("/day", "_self");
+    this.router.navigate(['/day']);
   }
 
   eventTimesChanged({
