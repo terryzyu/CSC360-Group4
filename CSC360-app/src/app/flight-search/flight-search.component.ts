@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MockCities, } from '../mock-cities';
+import { CityService } from '../city.service';
 
 @Component({
   selector: 'app-flight-search',
@@ -8,11 +8,10 @@ import { MockCities, } from '../mock-cities';
 })
 export class FlightSearchComponent implements OnInit {
 
-  CITIES = new MockCities();
   cities: String[] = null;
   //timeCount = 1;
 
-  constructor() { }
+  constructor(private cityService: CityService) { }
 
   ngOnInit() {
   }
@@ -21,8 +20,8 @@ export class FlightSearchComponent implements OnInit {
     // TODO: update data on timeout
     //if (this.timeCount % 2 == 0) {
 
-      this.CITIES.refreshCities(event.target.value);
-      this.cities = this.CITIES.getCities();
+      this.cityService.refreshCities(event.target.value);
+      this.cities = this.cityService.getCities();
       //this.timeCount = 1;
 
     /*} else {
