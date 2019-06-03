@@ -1,56 +1,52 @@
 import { Injectable } from '@angular/core';
 import { HttpClient,  HttpErrorResponse } from '@angular/common/http';
-import {throwError} from 'rxjs';
-import {catchError} from 'rxjs/operators';
+import { throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
+
+export interface City {
+  totalResultsCount: number;
+  geonames: [{
+    adminCode1: string;
+    lng: String;
+    geonameId: number;
+    toponomyName: string;
+    countryId: string;
+    fcl: string;
+    population: number;
+    countryCode: string;
+    name: string;
+    fclName: string;
+    adminCodes1: {
+      ISO3166_2: string;
+    }
+    countryName: string;
+    fcodeName: string;
+    adminName1: string;
+    lat: string;
+    fcode: string;
+  }]
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class CityService {
 
+  baseURL = "http://api.geonames.org/searchJSON?name=";
+  accountURL = "&featureClass=P&username=wascollege"
+
+  search: City;
+  error: Error;
+
   constructor(private http: HttpClient) { }
-
-  CITIES: String[] = null;
-
-  getCities() {
-      return this.CITIES;
-  }
 
   refreshCities(entry: String) {
 
-    // TODO call to geonames for data
-    // https://www.geonames.org/export/
-
-  
-    console.log(this.http
-    .get<any>("api.geonames.org/searchJSON?name_startsWith=" + entry + "&featureClass=P&username=wascollege")
-    .pipe(catchError(this.handleError)))
+    //TODO: fix failed response
     
-    /*
-    .toPromise()
-    .then(response => response.json().data as String[])
-    .catch(this.handleError));
-    */
-    
-
-    this.CITIES = [
-      "Dallas",
-      "Paris",
-      "Las Vegas",
-      "Chicago",
-      "New York",
-      "New Orleans",
-      "Denver",
-      "Tokyo",
-      "Seattle",
-      "Boston",
-      "Shanghai",
-      "Prague",
-      "Amsterdam",
-      "London",
-      "Orlando",
-      "Miami"
-    ]
+    return this.http
+    .get<City>(this.baseURL + entry + this.accountURL)
+    .pipe(catchError(this.handleError));
   }
 
   private handleError(error: HttpErrorResponse) {
