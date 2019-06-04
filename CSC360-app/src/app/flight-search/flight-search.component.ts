@@ -8,9 +8,9 @@ import { CityService, City } from '../city.service';
 })
 export class FlightSearchComponent implements OnInit {
 
-  cities: String[] = null;
+  cities: string[];
   search: City;
-  error: Error;
+  error: any;
 
   constructor(private cityService: CityService) { }
 
@@ -20,18 +20,19 @@ export class FlightSearchComponent implements OnInit {
   refreshCities(event) {
     // TODO: update data on timeout
 
-    this.cityService.refreshCities(event.target.value)/*.subscribe(( data: City ) => this.search = {...data},
+    this.cityService.refreshCities(event.target.value).subscribe(( data: City ) => {
+      this.search = {...data};
+      console.log(this.search);
+    
+      var i: number;
+      var size: number = Math.min(10, this.search.totalResultsCount);
+
+      this.cities = new Array(size);
+
+      for (i = 0; i < size; i++){
+        this.cities[i] = this.search.geonames[i].name + ", " + this.search.geonames[i].adminName1;
+      }
+    },
     error => this.error = error);
-    
-    console.log(this.search);
-    
-    this.cities = String[this.search.totalResultsCount]
-
-    var i: number;
-
-    for (i = 0; i < this.search.totalResultsCount; i++){
-      this.cities[i] = this.search.geonames[i].name
-    }
-    */
   }
 }

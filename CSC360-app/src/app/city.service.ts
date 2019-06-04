@@ -7,7 +7,7 @@ export interface City {
   totalResultsCount: number;
   geonames: [{
     adminCode1: string;
-    lng: String;
+    lng: string;
     geonameId: number;
     toponomyName: string;
     countryId: string;
@@ -32,8 +32,9 @@ export interface City {
 })
 export class CityService {
 
-  baseURL = "http://api.geonames.org/searchJSON?name=";
-  accountURL = "&featureClass=P&username=wascollege"
+  //baseURL = "http://api.geonames.org/searchJSON?name=";
+  baseURL = "http://api.geonames.org/searchJSON?q=";
+  accountURL = "&isNameRequired=true&featureClass=P&orderby=relevance&username=wascollege"
 
   search: City;
   error: Error;
