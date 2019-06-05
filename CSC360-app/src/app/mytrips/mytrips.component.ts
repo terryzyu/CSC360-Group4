@@ -4,6 +4,7 @@ import {Trip} from '../trip';
 import {AngularFireList} from '@angular/fire/database';
 import { Router, ActivatedRoute} from '@angular/router';
 import {FirebaseUTEService} from '../firebase-ute.service';
+import {User} from '../user';
 
 @Component({
   selector: 'app-mytrips',
@@ -17,6 +18,7 @@ export class MyTripsComponent implements OnInit {
   noTrips = false;
   preLoader = true;
   userName: string;
+  user: User;
 
   constructor(private route: ActivatedRoute,
               private fbUTEService: FirebaseUTEService,
@@ -24,6 +26,7 @@ export class MyTripsComponent implements OnInit {
 
   ngOnInit() {
     this.dataState();
+    this.getUser();
     this.fbUTEService.setUserId('-Lg0ir26GSjcH6BE5LBE')
     let t = this.fbUTEService.getTripsByUserId();
     t.snapshotChanges().subscribe( data => {
@@ -46,6 +49,16 @@ export class MyTripsComponent implements OnInit {
         this.hideWhenNoTrips = true;
         this.noTrips = false;
       }
+    });
+  }
+
+  getUser() {
+    const t = this.fbUTEService.getUsersByEmail('ggk@hotmail.com');
+    t.snapshotChanges().subscribe(data => {
+      data.forEach( item => {
+        const a = item.payload.toJSON();
+        this.user = a as User;
+      });
     });
   }
 

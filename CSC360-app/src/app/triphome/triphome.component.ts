@@ -19,6 +19,7 @@ export class TriphomeComponent implements OnInit {
   tripID: string;
   error: any;
   userName: string;
+  temp: number;
 
   constructor(private route: ActivatedRoute,
               private location: Location,
@@ -42,7 +43,10 @@ export class TriphomeComponent implements OnInit {
 
   getWeather() {
     this.weatherService.getWeatherByCity(this.mytrip.location)
-      .subscribe(( data: Weather ) => this.weather = {...data},
+      .subscribe(( data: Weather ) => {
+        this.weather = {...data};
+        this.temp = 9 * (this.weather.main.temp - 273.15) / 5 + 32;
+        },
         error => this.error = error);
   }
 

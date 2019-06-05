@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {TripService} from '../trip.service';
 import { FirebaseUTEService} from '../firebase-ute.service';
 import {Location} from '@angular/common';
 import {Trip} from '../trip';
@@ -16,7 +15,6 @@ export class EditTripComponent implements OnInit {
   tripId: string;
 
   constructor(private route: ActivatedRoute,
-              private tripService: TripService,
               private location: Location,
               private fbUTEService: FirebaseUTEService
   ) { }

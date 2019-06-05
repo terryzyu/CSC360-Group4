@@ -45,6 +45,12 @@ export class FirebaseUTEService {
     return this.userRef;
   }
 
+  // Fetch users by email
+  getUsersByEmail(email: string) {
+    this.usersRef = this.db.list(this.basePath, ref => ref.orderByChild('email').equalTo(email));
+    return this.usersRef;
+  }
+
   addUser(newUser: User): void {
     // console.log(newUser)
     this.usersRef.push({
@@ -52,7 +58,7 @@ export class FirebaseUTEService {
       password: newUser.password,
       email: newUser.email,
       firstname: newUser.firstname,
-      lasname: newUser.lastname,
+      lastname: newUser.lastname,
       trips: newUser.trips
     });
   }
