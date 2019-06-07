@@ -25,7 +25,10 @@
     </div>
     <div class="form-group">
       <label for="location">Location:</label>
-      <input type="text" class="form-control" id="location" placeholder="Location" [(ngModel)]="newTrip.location" name="location">
+      <input type="list" class="form-control" id="location" placeholder="Location" [(ngModel)]="newTrip.location" name="location">
+      <datalist id="cities">
+        <option *ngFor = "let city of cities" value={{city}}>
+      </datalist>
     </div>
     <div class="form-group">
       <label for="location">Budget:</label>
