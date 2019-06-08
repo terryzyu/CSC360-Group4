@@ -4,6 +4,11 @@ import { BudgetComponent } from '../budget/budget.component';
 import { CalendarComponent } from '../calendar/calendar.component';
 import { Event } from '../event';
 import { EVENTS } from '../mock-events';
+import { FirebaseUTEService } from '../firebase-ute.service';
+import { getEventsInPeriod } from 'calendar-utils';
+import { DateAdapter } from 'angular-calendar';
+import { ClickDirective } from 'angular-calendar/modules/common/click.directive';
+import { AngularFireObject, AngularFireList } from '@angular/fire/database';
 
 @Component({
   selector: 'app-day',
@@ -12,15 +17,16 @@ import { EVENTS } from '../mock-events';
 })
 export class DayComponent implements OnInit {
 
-  EventsList: Event[] ;
+  //EventsList: Event[] ;
+  EventsList: AngularFireList<any>;
 
-  constructor(private location: Location) {}
+  constructor(private location: Location, private fbs:FirebaseUTEService) {}
 
   ngOnInit() {
-    this.EventsList = EVENTS;
-    this.EventsList.push(new Event(111, new Date(4, 31, 2019), 2700, 'Arcade'));
+    this.EventsList = this.fbs.getEvents();
+    
   }
-
+  
 
   goBack() {
     this.location.back();
