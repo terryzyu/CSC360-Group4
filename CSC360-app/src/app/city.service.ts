@@ -42,8 +42,6 @@ export class CityService {
   constructor(private http: HttpClient) { }
 
   refreshCities(entry: String) {
-
-    //TODO: fix failed response
     
     return this.http
     .get<City>(this.baseURL + entry + this.accountURL)
