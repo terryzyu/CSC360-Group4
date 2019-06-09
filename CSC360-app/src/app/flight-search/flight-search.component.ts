@@ -18,7 +18,6 @@ export class FlightSearchComponent implements OnInit {
   }
 
   refreshCities(event) {
-    // TODO: update data on timeout
 
     this.cityService.refreshCities(event.target.value).subscribe(( data: City ) => {
       this.search = {...data};
