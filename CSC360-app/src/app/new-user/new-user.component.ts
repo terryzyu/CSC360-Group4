@@ -37,7 +37,8 @@ export class NewUserComponent implements OnInit {
       this.goBack()
       this.authService.signInWithEmail(this.newUser.email, this.newUser.password)
        .then((res) => {
-    
+
+          this.fbUTEService.setUserId(this.fbUTEService.getUsersByEmail(this.newUser.email)[0].username)
           this.router.navigate(['homepage']);
        })
        .catch((err) => console.log('error: ' + err));});

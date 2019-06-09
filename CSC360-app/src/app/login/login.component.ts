@@ -26,7 +26,8 @@ export class LoginComponent implements OnInit {
   signInWithEmail() {
     this.authService.signInWithEmail(this.user.email, this.user.password)
        .then((res) => {
-    
+         
+          this.fbUTEService.setUserId(this.fbUTEService.getUsersByEmail(this.user.email)[0].username)
           this.router.navigate(['homepage']);
        })
        .catch((err) => console.log('error: ' + err));
