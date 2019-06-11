@@ -17,8 +17,6 @@ export class MyTripsComponent implements OnInit {
   hideWhenNoTrips = false;
   noTrips = false;
   preLoader = true;
-  userName: string;
-  user: User;
 
   constructor(private route: ActivatedRoute,
               private fbUTEService: FirebaseUTEService,
@@ -26,8 +24,7 @@ export class MyTripsComponent implements OnInit {
 
   ngOnInit() {
     this.dataState();
-    this.getUser();
-    this.fbUTEService.setUserId('-Lg0ir26GSjcH6BE5LBE')
+    // this.fbUTEService.setUserId('-Lg0ir26GSjcH6BE5LBE')
     let t = this.fbUTEService.getTripsByUserId();
     t.snapshotChanges().subscribe( data => {
       this.trips = [];
@@ -49,16 +46,6 @@ export class MyTripsComponent implements OnInit {
         this.hideWhenNoTrips = true;
         this.noTrips = false;
       }
-    });
-  }
-
-  getUser() {
-    const t = this.fbUTEService.getUsersByEmail('ggk@hotmail.com');
-    t.snapshotChanges().subscribe(data => {
-      data.forEach( item => {
-        const a = item.payload.toJSON();
-        this.user = a as User;
-      });
     });
   }
 
