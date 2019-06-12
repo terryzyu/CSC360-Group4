@@ -8,7 +8,8 @@ import { FirebaseUTEService } from '../firebase-ute.service';
 import { getEventsInPeriod } from 'calendar-utils';
 import { DateAdapter } from 'angular-calendar';
 import { ClickDirective } from 'angular-calendar/modules/common/click.directive';
-import { AngularFireObject, AngularFireList } from '@angular/fire/database';
+import { AngularFireObject, AngularFireList, AngularFireDatabase } from '@angular/fire/database';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-day',
@@ -17,17 +18,17 @@ import { AngularFireObject, AngularFireList } from '@angular/fire/database';
 })
 export class DayComponent implements OnInit {
 
-  //EventsList: Event[] ;
-  EventsList: AngularFireList<any>;
+  //EventsList: Observable<Event[]>([]);
+  private EventsList = new Observable<Event[]>();
+  XEVENTS = [1,2,3];
 
   constructor(private location: Location, private fbs:FirebaseUTEService) {}
 
   ngOnInit() {
-    this.EventsList = this.fbs.getEvents();
-    
-  }
-  
+    this.EventsList = this.fbs.getEventsByUserId().valueChanges();
 
+  }
+   
   goBack() {
     this.location.back();
   }
