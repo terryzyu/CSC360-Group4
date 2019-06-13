@@ -11,6 +11,7 @@ import { ClickDirective } from 'angular-calendar/modules/common/click.directive'
 import { AngularFireObject, AngularFireList, AngularFireDatabase } from '@angular/fire/database';
 import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
+import {NgbDateStruct, NgbCalendar} from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-day',
@@ -20,17 +21,23 @@ import { Router } from '@angular/router';
 export class DayComponent implements OnInit {
 
   //EventsList: Observable<Event[]>([]);
-  private EventsList = new Observable<Event[]>();
+  public EventsList = new Observable<Event[]>();
   XEVENTS = [1,2,3];
-  private router : Router;
-  constructor(private location: Location, private fbs:FirebaseUTEService, private r: Router) {
+  public router : Router;
+  public userClicked_Day:number;
+  public userClicked_Month:number;
+
+  constructor(private location: Location, private fbs:FirebaseUTEService, public r: Router) {
     this.router = r;
+    this.userClicked_Month = this.router.getCurrentNavigation().extras.state.month;
     console.log(this.router.getCurrentNavigation().extras.state.month);
+    this.userClicked_Day = this.router.getCurrentNavigation().extras.state.day;
     console.log(this.router.getCurrentNavigation().extras.state.day);
   }
 
   ngOnInit() {
     this.EventsList = this.fbs.getEventsByUserId().valueChanges();
+
 
   }
    
