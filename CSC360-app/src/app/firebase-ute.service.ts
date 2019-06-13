@@ -135,7 +135,7 @@ export class FirebaseUTEService {
   // Fetch all Events.
   getEvents() {
     this.eventsRef = this.db.list(this.basePath);
-    return this.eventRef;
+    return this.eventsRef;
   }
 
   // Fetch all Events belonging to a user,trip pair .

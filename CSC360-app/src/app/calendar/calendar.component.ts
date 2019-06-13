@@ -93,7 +93,9 @@ export class CalendarComponent implements OnInit {
         this.activeDayIsOpen = true;
       }
     }
-    this.router.navigate(['/day']);
+    let month = date.getMonth() + 1; //Stores numeric month value
+    let day = date.getDate(); //Stores numeric day value
+    this.router.navigate(['/day'], {state: {month : month, day : day}}); //Sends data over to day page
   }
 
   eventTimesChanged({
