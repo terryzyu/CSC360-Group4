@@ -15,6 +15,7 @@
   </thead>
   <tbody>
     <tr *ngFor="let event of (EventsList | async)">
+      <th scope="row"> {{event.name}}  </th>
       <th scope="row"> {{event.date}}  </th>
     </tr>
   </tbody>
