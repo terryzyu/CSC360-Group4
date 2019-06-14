@@ -4,6 +4,7 @@ import { AngularFireDatabase, AngularFireList, AngularFireObject} from '@angular
 import {User} from './user';
 import {Trip} from './trip';
 import {Event} from './event';
+import {Flight} from './flight';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class FirebaseUTEService {
   private userId: string;
   private tripId: string;
   private eventId: string;
+  private flightId: string;
 
   private usersRef: AngularFireList<any>;
   private userRef: AngularFireObject<any>;
@@ -146,6 +148,10 @@ export class FirebaseUTEService {
   // Set Event ID
   setEventId(eventid: string) {
     this.eventId = eventid;
+  }
+
+  setFlightID(flightid: string) {
+    this.flightId = flightid;
   }
   // Fetch an event by event id
   getEvent() {
