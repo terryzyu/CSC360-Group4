@@ -14,11 +14,13 @@
       <th scope="col">Date</th>
   </thead>
   <tbody>
-    <tr *ngFor="let event of (MatchingEvents | async)">
-      
+    <tr *ngFor="let event of (EventsListObservable | async)">
+    <!--
       <th scope="row" *ngIf="dateClicked === event.date"> {{event.name}}  </th>
+      <th scope="row" *ngIf="dateClicked === event.date"> {{event.date}}  </th>
+    -->
+      <th scope="row" > {{event.name}}  </th>
       <th scope="row" > {{event.date}}  </th>
-      
     </tr>
   </tbody>
 </table>
