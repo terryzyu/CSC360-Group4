@@ -1,26 +1,28 @@
 <nav class="navbar navbar-dark bg-primary">
     <a  href="javascript:void(0)" class="text-light" (click)="goBack()">Back to Calendar</a>
+    
   <div class="container justify-content-center">
-      <span  class="navbar-brand mx-5">{{events.date |date:'MM/dd/yyyy'}}</span>
-    </div>
+      <p class="text-center text-light"> Day View </p>
+  </div>
 </nav>
 
-<div class="container-fluid ">
-  <div class="list-group">
-    <a class="list-group-item list-group-item-action w-100 mx-auto" >
-      <div class="row" *ngFor="let event of EventsList">
-        <div class="col-sm-3"> 
-          <ul  >{{event.name}}</ul>
-        </div>
-        <div class="col-sm-3" >
-          <ul >{{event.date}}</ul>
-        </div>
-      </div> 
-    </a>
-  </div>
-</div>
 
-<p>
-  
-</p>
+
+<table class="table table-striped">
+  <thead>
+      <th scope="col">Event Name</th>
+      <th scope="col">Date</th>
+  </thead>
+  <tbody>
+    <tr *ngFor="let event of (EventsListObservable | async)">
+    <!--
+      <th scope="row" *ngIf="dateClicked === event.date"> {{event.name}}  </th>
+      <th scope="row" *ngIf="dateClicked === event.date"> {{event.date}}  </th>
+    -->
+      <th scope="row" > {{event.name}}  </th>
+      <th scope="row" > {{event.date}}  </th>
+    </tr>
+  </tbody>
+</table>
+
 
