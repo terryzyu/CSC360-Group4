@@ -1,11 +1,15 @@
 import {   Component, ChangeDetectionStrategy, ViewChild, TemplateRef, OnInit } from '@angular/core';
 import { Location} from '@angular/common';
-import { Pipe, PipeTransform } from '@angular/core';
-import { DomSanitizer} from '@angular/platform-browser';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView } from 'angular-calendar';
+import {Router, ActivatedRoute} from '@angular/router';
+import {Trip} from '../trip';
+import {AngularFireList} from '@angular/fire/database';
+import {FirebaseUTEService} from '../firebase-ute.service';
+import { load } from '@angular/core/src/render3';
+
 
 const colors: any = {
   red: {
@@ -30,6 +34,12 @@ const colors: any = {
 })
 
 export class CalendarComponent implements OnInit {
+  trips: Trip[];
+  hideWhenNoTrips = false;
+  noTrips = false;
+  preLoader = true;
+  userName: string;
+  
 @ViewChild('modalContent') modalContent: TemplateRef<any>;
 
   view: CalendarView = CalendarView.Month;
@@ -61,11 +71,15 @@ export class CalendarComponent implements OnInit {
 
   refresh: Subject<any> = new Subject();
 
-  events: CalendarEvent[] = []; //ADD ANY EVENTS HERE FOR SCRIPTING/CREATING OBJECTS
+  events: CalendarEvent[] = [];
+ 
+  activeDayIsOpen: boolean = false;
 
-  activeDayIsOpen: boolean = true;
-
-  constructor(private modal: NgbModal, private location: Location) {}
+  constructor(private modal: NgbModal,
+              private location: Location,
+              private router: Router,
+              private fbUTEService: FirebaseUTEService,
+              private route: ActivatedRoute) {}
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -80,7 +94,11 @@ export class CalendarComponent implements OnInit {
         this.activeDayIsOpen = true;
       }
     }
-    window.open("/day", "_self");
+
+    let month = date.getMonth() + 1; //Stores numeric month value
+    let day = date.getDate(); //Stores numeric day value
+    this.router.navigate(['/day'], {state: {month : month, day : day}}); //Sends data over to day page
+
   }
 
   eventTimesChanged({
@@ -106,22 +124,6 @@ export class CalendarComponent implements OnInit {
     this.modal.open(this.modalContent, { size: 'lg' });
   }
 
-  addEvent(): void {
-    this.events = [
-      ...this.events,
-      {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true
-        }
-      }
-    ];
-  }
 
   deleteEvent(eventToDelete: CalendarEvent) {
     this.events = this.events.filter(event => event !== eventToDelete);
@@ -134,7 +136,52 @@ export class CalendarComponent implements OnInit {
   closeOpenMonthViewDay() {
     this.activeDayIsOpen = false;
   }
+
+  populateTrips(){
+    if(this.trips.length > 0){
+      for(let vaca of this.trips){
+        this.events = [...this.events, {
+          title: vaca.name,
+          start: startOfDay(vaca.startDate),
+          end: endOfDay(vaca.endDate),
+          color: colors.blue,
+          actions: this.actions,
+          allDay: true
+        }];
+      }
+      this.refresh.next();
+    }
+  }
+
   ngOnInit() {
+    this.dataState();
+    this.fbUTEService.setUserId('-Lg0ir26GSjcH6BE5LBE')
+    let t = this.fbUTEService.getTripsByUserId();
+    t.snapshotChanges().subscribe( data => {
+      this.trips = [];
+      data.forEach( item => {
+        let a = item.payload.toJSON();
+        a['$key'] = item.key;
+        this.trips.push(a as Trip);
+      });
+
+      this.populateTrips();
+      
+    });
+    
+  }
+
+  dataState() {
+    this.fbUTEService.getTripsByUserId().valueChanges().subscribe(data => {
+      this.preLoader = false;
+      if (data.length <= 0) {
+        this.hideWhenNoTrips = false;
+        this.noTrips = true;
+      } else {
+        this.hideWhenNoTrips = true;
+        this.noTrips = false;
+      }
+    });
   }
 
   goBack() {

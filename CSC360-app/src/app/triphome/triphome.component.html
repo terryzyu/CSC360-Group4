@@ -7,10 +7,11 @@
   <div class="container justify-content-center">
     <span  class="navbar-brand mx-5">{{mytrip.name}}</span>
   </div>
-  <div class="navebar-nav">
-    <a routerLink="/weather" class="nav-link navbar-right">
-      <img src="assets/sunny-cartoon-weather-clipart-1.jpg" style="width:40px" alt="Sunny">
-    </a>
+  <div class="navebar-nav" *ngIf="temp">
+    <span class="navbar-text navbar-right">
+      <!--<img src="assets/sunny-cartoon-weather-clipart-1.jpg" style="width:40px" alt="Sunny"> -->
+      {{temp | number: '0.0-1'}}&#8457;
+    </span>
   </div>
 </nav>
 
