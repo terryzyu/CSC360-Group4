@@ -18,4 +18,14 @@ export class FlightService {
     return this.flightsReference;
   }
 
+  getFlight(flightNumber: number) {
+    this.flightReference = this.db.object(this.basePath + this.flightReference);
+    return this.flightReference;
+  }
+
+  deleteFlight(flightNumber: number) {
+    this.flightReference = this.db.object(this.basePath + this.flightReference);
+    this.flightReference.remove();
+  }
+
 }

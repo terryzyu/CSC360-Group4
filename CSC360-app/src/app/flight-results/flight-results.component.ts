@@ -3,6 +3,7 @@ import {AngularFireList} from '@angular/fire/database';
 import { Router, ActivatedRoute} from '@angular/router';
 import {FirebaseUTEService} from '../firebase-ute.service';
 import {Flight} from '../flight';
+import { Trip } from '../trip';
 
 @Component({
   selector: 'app-flight-results',
@@ -22,8 +23,8 @@ export class FlightResultsComponent implements OnInit {
   ngOnInit() {
   }
 
-  goToFlight(flightNumber: number) {
-    this.fbUTEService.setFlightNumber(flightNumber);
+  addFlightToTrip(flightNumber: string, tripID) {
+    this.fbUTEService.setFlightID(flightNumber);
     this.router.navigate([`/flights/${flightNumber}`]);
   }
 
