@@ -34,6 +34,7 @@ import { AuthService } from './auth.service';
 import {environment} from '../environments/environment';
 import { EditTripComponent } from './edit-trip/edit-trip.component';
 import { NewUserComponent } from './new-user/new-user.component';
+import { NewFlightFromTripComponent } from './new-flight-from-trip/new-flight-from-trip.component';
 
 
 
@@ -53,7 +54,8 @@ import { NewUserComponent } from './new-user/new-user.component';
     EventAddComponent,
     CalendarComponent,
     EditTripComponent,
-    NewUserComponent
+    NewUserComponent,
+    NewFlightFromTripComponent
   ],
   imports: [
     CommonModule,
