@@ -22,22 +22,6 @@ import { BudgetComponent } from './budget/budget.component';
 import { CalendarComponent } from './calendar/calendar.component';
 import { DayComponent } from './day/day.component';
 
-import { EventAddComponent } from './event-add/event-add.component';
-import {HttpClientModule} from '@angular/common/http';
-
-import { AngularFireModule} from '@angular/fire';
-import { AngularFireDatabaseModule} from '@angular/fire/database';
-import { AngularFireAuthModule } from '@angular/fire/auth'
-import { AngularFireAuth } from '@angular/fire/auth';
-import { AuthService } from './auth.service';
-
-import {environment} from '../environments/environment';
-import { EditTripComponent } from './edit-trip/edit-trip.component';
-import { NewUserComponent } from './new-user/new-user.component';
-import { NewTripFromFlightComponent } from './new-trip-from-flight/new-trip-from-flight.component';
-
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,12 +34,7 @@ import { NewTripFromFlightComponent } from './new-trip-from-flight/new-trip-from
     FlightSearchComponent,
     BudgetComponent,
     CalendarComponent,
-    DayComponent,
-    EventAddComponent,
-    CalendarComponent,
-    EditTripComponent,
-    NewUserComponent,
-    NewTripFromFlightComponent
+    DayComponent
   ],
   imports: [
     CommonModule,
